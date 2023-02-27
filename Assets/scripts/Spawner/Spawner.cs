@@ -74,7 +74,7 @@ public abstract class Spawner : GeneralMonobehaviour
         {
             if (poolObj.name == prefab.name)
             {
-                Debug.Log("Prefab Name is: " + prefab.name);
+                Debug.Log(transform.name + ": Prefab Name is: " + prefab.name);
                 this.poolObjs.Remove(poolObj);
                 return poolObj;
             }
@@ -88,7 +88,7 @@ public abstract class Spawner : GeneralMonobehaviour
 
 
     /// <summary>
-    /// ??a nh?ng viên ??n b? h?y vào pool ?? có th? tái s? d?ng
+    /// if bullets destroy it's will put on pool to reuse
     /// </summary>
     /// <param name="obj"></param>
     public virtual void Despawn(Transform obj)

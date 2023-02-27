@@ -7,6 +7,7 @@ public class ShipShooting : MonoBehaviour
     [SerializeField] protected bool isShooting = false;
 
     [SerializeField] protected float shootingDelay = 1f;
+
     [SerializeField] protected float shootingTimer = 0f;
 
     private void Update()

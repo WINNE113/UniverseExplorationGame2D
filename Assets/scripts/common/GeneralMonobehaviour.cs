@@ -31,4 +31,9 @@ public class GeneralMonobehaviour : MonoBehaviour
         // For Override
     }
 
+    protected virtual void OnEnable()
+    {
+        Debug.Log("Object Enabled");
+    }
+
 }
