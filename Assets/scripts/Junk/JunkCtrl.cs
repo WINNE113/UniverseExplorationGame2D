@@ -5,34 +5,31 @@ using UnityEngine;
 
 public class JunkCtrl : GeneralMonobehaviour
 {
-    [SerializeField] protected JunkSpawner junkSpawner;
+    [SerializeField] protected Transform model;
+    [SerializeField] protected JunkDespawn junkDespawn;
 
-    [SerializeField] protected JunkSpawnPoints spawnPoints;
-
-
-    public JunkSpawner JunkSpawner { get { return junkSpawner; } }
-
-    public JunkSpawnPoints SpawnPoints { get { return spawnPoints; } }
+    public JunkDespawn JunkDespawn { get { return junkDespawn; } }
+    public Transform Model { get { return model; } }
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadJunkSpawner();
-        this.LoadSpawnPoints();
-    }
-    private void LoadSpawnPoints()
-    {
-        if (this.spawnPoints != null) return;
-
-        this.spawnPoints = Transform.FindObjectOfType<JunkSpawnPoints>();
-
-        Debug.Log(transform.name + ": LoadSpawnPoint", gameObject);
+        this.LoadModel();
+        this.LoadJunkDespawn();
     }
 
-    private void LoadJunkSpawner()
+    private void LoadJunkDespawn()
     {
-        if (junkSpawner != null) return;
+        if (junkDespawn != null) return;
+        junkDespawn = GetComponentInChildren<JunkDespawn>();
+    }
 
-        this.junkSpawner = GetComponent<JunkSpawner>(); 
+    private void LoadModel()
+    {
+        if (this.model != null) return;
+
+        this.model = transform.Find("Model");
+
+        Debug.Log(transform.name + ": LoadModel", gameObject);
     }
 }

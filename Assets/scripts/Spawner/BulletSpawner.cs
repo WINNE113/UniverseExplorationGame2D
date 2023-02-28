@@ -9,7 +9,6 @@ public class BulletSpawner : Spawner
 
     public static string bulletOne = "Bullet_1";
 
-
     public static BulletSpawner Instance { get { return instance; } }
 
     protected override void Awake()

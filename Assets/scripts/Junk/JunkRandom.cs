@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class JunkRandom : GeneralMonobehaviour
 {
-    [SerializeField] protected JunkCtrl junkCtrl;
+    [SerializeField] protected JunkSpawnerCtrl JunkSpawnerCtrl;
 
     protected override void LoadComponents()
     {
@@ -17,9 +17,9 @@ public class JunkRandom : GeneralMonobehaviour
 
     private void LoadJunkCtrl()
     {
-        if (this.junkCtrl != null) return;
+        if (this.JunkSpawnerCtrl != null) return;
         
-        this.junkCtrl = GetComponent<JunkCtrl>();
+        this.JunkSpawnerCtrl = GetComponent<JunkSpawnerCtrl>();
 
         Debug.Log(transform.name + ": LoadJunkCtrl", gameObject);
     }
@@ -34,11 +34,11 @@ public class JunkRandom : GeneralMonobehaviour
     /// </summary>
     protected virtual void JunkSpawning()
     {
-        Transform ranPoint = this.junkCtrl.SpawnPoints.GetRanDom();
+        Transform ranPoint = this.JunkSpawnerCtrl.SpawnPoints.GetRanDom();
 
         Vector3 pos = ranPoint.position;
         Quaternion rot = transform.rotation;
-        Transform obj = junkCtrl.JunkSpawner.Spawn(JunkSpawner.MateoriteOne, pos, rot);
+        Transform obj = JunkSpawnerCtrl.JunkSpawner.Spawn(JunkSpawner.MateoriteOne, pos, rot);
         obj.gameObject.SetActive(true);
       
         Invoke(nameof(this.JunkSpawning), 5f);

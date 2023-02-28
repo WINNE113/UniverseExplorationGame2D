@@ -25,7 +25,7 @@ public abstract class Despawn : GeneralMonobehaviour
     protected abstract bool CanDespawn();
   
 
-    protected virtual void DespawnObject()
+    public virtual void DespawnObject()
     {
         Destroy(transform.parent.gameObject);
     }
